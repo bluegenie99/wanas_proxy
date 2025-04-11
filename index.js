@@ -1,11 +1,12 @@
-const cors = require('cors');
-app.use(cors());
 const express = require('express');
-const app = express();
+const cors = require('cors');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
-const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+const app = express();
+app.use(cors()); // تمكين CORS
 app.use(express.json());
+
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 app.get('/', (req, res) => {
   res.send('Hello from Render + Gemini!');
